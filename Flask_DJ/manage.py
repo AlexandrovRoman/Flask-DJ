@@ -8,16 +8,9 @@ from .utils.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/
-db init - начало поддержки миграций
-db migrate - миграция бд
-db upgrade - обновление бд
-db downgrade - откат миграции
 some methods:
-runserver - запуск сервера
-startapp name - создание приложения name
-new_user_has_full_data surname, name, fathername, birth_year, birth_month, birth_day, age, email, password, sex - 
-создание пользователя с заданными параметрами
-new_default_user mail, password - создание пользователя с дефолтными параметрами
+runserver - start server
+startapp name - create folder containing forms.py, models.py, urls.py, views.py, 
 """
 manager = None
 app_ = None

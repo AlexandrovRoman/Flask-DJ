@@ -38,4 +38,5 @@ setup(
             'startapp = Flask_DJ:start',
         ],
     },
+    include_package_data=True,
 )

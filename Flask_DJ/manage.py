@@ -1,8 +1,11 @@
-from os import makedirs
+from os import getcwd, mkdir
 from os.path import exists
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 from importlib import import_module
+from . import CreationError
+from .utils.templates import views_file, models_file, urls_file, forms_file
+from waitress import serve
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/
 db init - начало поддержки миграций
@@ -36,23 +39,44 @@ def init_db(models=[]):
         import_module(file)
 
 
-def runserver():  # TODO: Production config
-    app_.run()
+def runserver(host, port):
+    if app_.debug:
+        app_.run(host=host, port=port)
+    else:
+        serve(app_, host=host, port=port)
+
+
+def create_dir(name):
+    try:
+        mkdir(name)
+    except (FileNotFoundError, PermissionError):
+        raise CreationError('Не удается создать директорию с данным именем')
+
+
+def create_files(name):
+    with open(f'{name}/views.py', 'w') as f:
+        f.write(views_file)
+    with open(f'{name}/models.py', 'w') as f:
+        f.write(models_file.format(project=getcwd().split('\\')[-1]))
+    with open(f'{name}/urls.py', 'w') as f:
+        f.write(urls_file)
+    with open(f'{name}/forms.py', 'w') as f:
+        f.write(forms_file)
+
+
+def warning_handler(message):
+    commands = {1: lambda: None, 2: exit}
+    try:
+        commands[int(input(f'{message}\n1. Yes\n2. No'))]()
+    except (ValueError, KeyError):
+        print('Incorrect input')
+        exit(1)
 
 
 def startapp(name):
-    if not exists(name):
-        makedirs(name)
-    with open(f'{name}/views.py', 'w') as f:
-        f.write('# Create your views functions or classes\n')
-    with open(f'{name}/models.py', 'w') as f:
-        f.write('from app import db\n\n# Create your models\n')  # TODO: Заменить app на нужную папку
-    with open(f'{name}/urls.py', 'w') as f:
-        f.write('from Flask_DJ.utils.urls import path\n\n# Add your urls\nurlpatterns = [\n    \n]\n')
-    with open(f'{name}/forms.py', 'w') as f:
-        f.write('from flask_wtf import FlaskForm\nimport wtforms\n\n# Create your forms\n')
+    if exists(name):
+        warning_handler('Директория с данным именем уже существует, все равно создать?')
+    else:
+        create_dir(name)
+    create_files(name)
     print(f'app {name} created')
-
-
-if __name__ == '__main__':
-    manager.run()

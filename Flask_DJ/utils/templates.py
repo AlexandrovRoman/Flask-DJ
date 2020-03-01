@@ -7,6 +7,9 @@ urlpatterns = [
     'app.urls',
 ]
 
+HOST = '127.0.0.1'
+PORT = 5000
+
 
 class BaseConfig:
     WTF_CSRF_SECRET_KEY = '{csrf}'
@@ -69,8 +72,21 @@ for command in manage.commands:
 @manage.manager.command
 def runserver():
     add_urls(config.urlpatterns)
-    manage.runserver()
+    manage.runserver(config.HOST, config.PORT)
 
 
 manage.manager.run()
+"""
+
+views_file = "# Create your views functions or classes\n"
+
+models_file = """from {project} import db
+
+# Create your models
+"""
+
+forms_file = """from flask_wtf import FlaskForm
+import wtforms
+
+# Create your forms
 """

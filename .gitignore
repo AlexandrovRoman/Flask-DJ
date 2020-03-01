@@ -123,3 +123,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Pycharm setting
+.idea/
+
+# test app
+test_project/

@@ -36,7 +36,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from Flask_DJ.utils.app_init import create_session
+from Flask_DJ.app_init import create_session
 from .config import Config
 
 app = Flask('__main__')
@@ -51,7 +51,7 @@ login_manager.init_app(app)
 session = create_session(Config.SQLALCHEMY_DATABASE_URI, SqlAlchemyBase)
 """
 
-urls_file = """from Flask_DJ.utils.urls import path
+urls_file = """from Flask_DJ.urls import path
 
 # Add your urls
 urlpatterns = [
@@ -60,7 +60,7 @@ urlpatterns = [
 """
 
 manage_file = """from Flask_DJ import manage
-from Flask_DJ.utils.app_init import add_urls
+from Flask_DJ.app_init import add_urls
 from {project_name} import app, config
 
 manage.init_manage(app)

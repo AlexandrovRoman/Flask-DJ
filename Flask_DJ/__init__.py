@@ -1,6 +1,6 @@
 from os import makedirs, mkdir
 from Flask_DJ.exceptions import CreationError
-from Flask_DJ.utils.templates import config_file, init_file, urls_file, manage_file
+from Flask_DJ.templates import config_file, init_file, urls_file, manage_file
 from string import ascii_letters
 from random import choices, randint
 from sys import argv

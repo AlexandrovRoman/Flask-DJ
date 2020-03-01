@@ -4,7 +4,7 @@ from flask_migrate import MigrateCommand
 from flask_script import Manager
 from importlib import import_module
 from . import CreationError
-from .utils.templates import views_file, models_file, urls_file, forms_file
+from Flask_DJ.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/

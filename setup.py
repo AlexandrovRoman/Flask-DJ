@@ -7,12 +7,9 @@ here = path.abspath(path.dirname(__file__))
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
-with open(path.join(here, 'requirements.txt'), encoding='utf-8') as f:
-    requirements = f.readlines()
-
 setup(
     name='Flask-DJ',  # Required
-    version='0.0.1',  # Required
+    version='0.0.3',  # Required
     description='Django (mvc) structure for your Flask project',  # Optional
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
@@ -32,11 +29,20 @@ setup(
     ],
     keywords='mvc django flask structure',  # Optional
     packages=find_packages(),  # Required
-    install_requires=requirements,
+    install_requires=[
+        'waitress==1.4.3',
+        'flask==1.1.1',
+        'Flask-Migrate==2.5.2',
+        'Flask-Script==2.0.6',
+        'Flask-SQLAlchemy==2.4.1',
+        'WTForms==2.2.1',
+        'SQLAlchemy==1.3.13',
+        'Flask-WTF==0.14.3',
+        'Flask-Login==0.5.0'
+    ],
     entry_points={
         'console_scripts': [
             'startapp = Flask_DJ:start',
         ],
     },
-    include_package_data=True,
 )

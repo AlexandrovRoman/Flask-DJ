@@ -28,7 +28,7 @@ class DevelopConfig(BaseConfig):
     ASSETS_DEBUG = True
 
 
-Config = ProductionConfig
+Config = DevelopConfig
 """
 
 init_file = """import sqlalchemy.ext.declarative as dec
@@ -37,12 +37,14 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from Flask_DJ.app_init import create_session
+from Flask_DJ.urls import Path
 from .config import Config
 
 app = Flask('__main__')
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
+path = Path(app)
 
 SqlAlchemyBase = dec.declarative_base()
 
@@ -51,7 +53,7 @@ login_manager.init_app(app)
 session = create_session(Config.SQLALCHEMY_DATABASE_URI, SqlAlchemyBase)
 """
 
-urls_file = """from Flask_DJ.urls import path
+urls_file = """from {project_name} import path
 
 # Add your urls
 urlpatterns = [
@@ -80,7 +82,7 @@ manage.manager.run()
 
 views_file = "# Create your views functions or classes\n"
 
-models_file = """from {project} import db
+models_file = """from {project_name} import db
 
 # Create your models
 """

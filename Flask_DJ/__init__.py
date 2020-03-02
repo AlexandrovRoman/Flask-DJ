@@ -24,8 +24,8 @@ def create_config(app_path):
                 config_file.format(csrf=generate_key(randint(9, 12)), secret_key=generate_key(randint(9, 12))))
 
 
-def create_urls(app_path):
-    create_file(app_path, 'urls', urls_file)
+def create_urls(app_path, project_name):
+    create_file(app_path, 'urls', urls_file.format(project_name=project_name))
 
 
 def create_main(path, name):
@@ -33,11 +33,11 @@ def create_main(path, name):
     mkdir(app_path)
     create_init(app_path)
     create_config(app_path)
-    create_urls(app_path)
+    create_urls(app_path, name)
 
 
-def create_manage(path, name):
-    create_file(path, 'manage', manage_file.format(project_name=name))
+def create_manage(path, project_name):
+    create_file(path, 'manage', manage_file.format(project_name=project_name))
 
 
 def create_path(name, path):

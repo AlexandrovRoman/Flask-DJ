@@ -47,12 +47,13 @@ def create_dir(name):
 
 
 def create_files(name):
+    project_name = getcwd().split('\\')[-1]
     with open(f'{name}/views.py', 'w') as f:
         f.write(views_file)
     with open(f'{name}/models.py', 'w') as f:
-        f.write(models_file.format(project=getcwd().split('\\')[-1]))
+        f.write(models_file.format(project_name=project_name))
     with open(f'{name}/urls.py', 'w') as f:
-        f.write(urls_file)
+        f.write(urls_file.format(project_name=project_name))
     with open(f'{name}/forms.py', 'w') as f:
         f.write(forms_file)
 

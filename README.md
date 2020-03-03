@@ -9,7 +9,7 @@
  pip install Flask-DJ
  ### Start app:
  ```shell script
- startapp {your_app_name}
+ startproject {your_app_name}
 ```
 <br>
  
@@ -18,8 +18,8 @@
 from Flask_DJ import start
 from os import getcwd
 
-yur_app_name = 'app'
-start(yur_app_name, getcwd())
+your_project_name = 'app'
+start(your_project_name, getcwd())
 ```
  ### New app:
  

@@ -7,11 +7,7 @@ from . import CreationError
 from Flask_DJ.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
 
-"""database-methods: https://flask-migrate.readthedocs.io/en/latest/
-some methods:
-runserver - start server
-startapp name - create folder containing forms.py, models.py, urls.py, views.py, 
-"""
+"""database-methods: https://flask-migrate.readthedocs.io/en/latest/"""
 manager = None
 app_ = None
 
@@ -39,11 +35,11 @@ def runserver(host, port):
         serve(app_, host=host, port=port)
 
 
-def create_dir(name):
+def create_path(name):
     try:
         mkdir(name)
     except (FileNotFoundError, PermissionError):
-        raise CreationError('Не удается создать директорию с данным именем')
+        raise CreationError('Can`t create a directory with this name')
 
 
 def create_files(name):
@@ -68,9 +64,10 @@ def warning_handler(message):
 
 
 def startapp(name):
+    """Create folder containing forms.py, models.py, urls.py, views.py"""
     if exists(name):
-        warning_handler('Директория с данным именем уже существует, все равно создать?')
+        warning_handler('A directory with this name already exists, still create?')
     else:
-        create_dir(name)
+        create_path(name)
     create_files(name)
     print(f'app {name} created')

@@ -9,7 +9,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='Flask-DJ',  # Required
-    version='0.0.7',  # Required
+    version='0.0.8',  # Required
     description='Django (mvc) structure for your Flask project',  # Optional
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
@@ -40,9 +40,9 @@ setup(
         'Flask-WTF==0.14.3',
         'Flask-Login==0.5.0'
     ],
-    entry_points={
-        'console_scripts': [
-            'startproject = Flask_DJ:start',
-        ],
-    },
+    # entry_points={
+    #     'console_scripts': [
+    #         'startproject = Flask_DJ:start',
+    #     ],
+    # },
 )

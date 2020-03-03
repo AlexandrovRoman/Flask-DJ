@@ -8,23 +8,18 @@
  ### Install:
  pip install Flask-DJ
  ### Start app:
- ```shell script
- startproject {your_app_name}
-```
-<br>
- 
- For those who didn't work out:
+
  ```python
-from Flask_DJ import start
+from Flask_DJ import ProjectConstructor
 from os import getcwd
 
 your_project_name = 'app'
-start(your_project_name, getcwd())
+ProjectConstructor(your_project_name, getcwd()).startproject()
 ```
  ### New app:
  
    ```shell script
- python manage.py starapp {app_name}
+ python manage.py startapp {app_name}
 ```
 
 ### Start server:

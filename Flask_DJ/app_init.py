@@ -29,6 +29,6 @@ def create_session(database_uri: str, database: DeclarativeMeta) -> Session:
     return __factory()
 
 
-def add_urls(urlpatterns: List[str]):
+def add_urls(urlpatterns: List[str]) -> None:
     for file in urlpatterns:
         import_module(file)

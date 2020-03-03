@@ -46,17 +46,17 @@ def create_path(project_name, path):
         makedirs(project_path)
         return project_path
     except FileExistsError:
-        raise CreationError('Директория с таким именем уже существует')
+        raise CreationError('The directory with that name already exists.')
     except PermissionError:
-        raise CreationError('У вас недостаточно прав для действий в данной директории, '
-                            'попробуйте сменить пользователя и повтрить попытку')
+        raise CreationError('You do not have enough permissions to act in this directory, '
+                            'try changing users and try again.')
 
 
 def get_name(project_name):
     try:
         return project_name or argv[1]
     except IndexError:
-        raise ValueError("Argument name is underfind")
+        raise ValueError("project_name is not defined")
 
 
 def start(project_name=None, path=''):

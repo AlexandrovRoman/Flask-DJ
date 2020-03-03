@@ -39,7 +39,7 @@ def get_module(path: str):
         pack = import_module(path)
         return pack
     except ModuleNotFoundError:
-        raise ImportError(f"Не удалось найти {path}")
+        raise ImportError(f"No {path} could be found")
 
 
 def get_patterns(path: str) -> List:
@@ -48,7 +48,7 @@ def get_patterns(path: str) -> List:
         patterns = getattr(pack, 'urlpatterns')
         return patterns
     except AttributeError:
-        raise AttributeError(f'Файл {path} не содержит urlpatterns')
+        raise AttributeError(f'{path} file does not contain a urlpatterns')
 
 
 def include(path: str):

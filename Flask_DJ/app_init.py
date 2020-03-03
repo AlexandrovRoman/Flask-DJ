@@ -9,7 +9,7 @@ from importlib import import_module
 __factory = None
 
 
-def _global_init(database_uri: str, database: DeclarativeMeta) -> None:
+def _db_init(database_uri: str, database: DeclarativeMeta) -> None:
     global __factory
 
     if __factory:
@@ -25,7 +25,7 @@ def _global_init(database_uri: str, database: DeclarativeMeta) -> None:
 
 def create_session(database_uri: str, database: DeclarativeMeta) -> Session:
     if not __factory:
-        _global_init(database_uri, database)
+        _db_init(database_uri, database)
     return __factory()
 
 

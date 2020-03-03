@@ -1,32 +1,40 @@
 from importlib import import_module
 from typing import Iterator, Tuple, Callable, List
-from warnings import warn
+from flask import Flask
 
 
 class Path:
-    def __init__(self, app):
+    """
+    Creator of your application paths
+    :param app: Your flask application
+    """
+    def __init__(self, app: Flask):
         self.app = app
 
-    def _add_url(self, url, func, methods):
+    def _add_url(self, url: str, view_func: Callable, methods: List) -> bool:
         debug = self.app.debug
-        if not (isinstance(url, str) and hasattr(func, '__call__')):
-            warn(f"Некорректные данные", Warning)
-            return False
-        self.app.add_url_rule(url, view_func=func, methods=methods)
+        self.app.add_url_rule(url, view_func=view_func, methods=methods)
         print(f'add url: {url}\n' if debug else '', end='')
         return True
 
-    def absolut_path(self, url, func, *, methods=['GET']):
-        return self._add_url(url, func, methods)
+    def add_absolute_path(self, url: str, view_func: Callable, *, methods=['GET']) -> bool:
+        """Adds a URL directly"""
+        return self._add_url(url, view_func, methods)
 
-    def relative_path(self, url: str, path_params: Iterator[Tuple[str, Callable, List]]):
-        for url_, fnc, methods_ in path_params:
-            if not self._add_url(url + url_, fnc, methods_):
+    def add_relative_path(self, url: str, path_params: Iterator[Tuple[str, Callable, List]]) -> bool:
+        """Adds URLs lists"""
+        for url_, view_func, methods_ in path_params:
+            if not self._add_url(url + url_, view_func, methods_):
                 return False
         return True
 
+    @staticmethod
+    def get_relative_path(url: str, view_func: Callable, *, methods=['GET']) -> Tuple[str, Callable, List]:
+        """Call this function if you want to connect url data relative to"""
+        return url, view_func, methods
 
-def get_module(path):
+
+def get_module(path: str):
     try:
         pack = import_module(path)
         return pack
@@ -34,7 +42,7 @@ def get_module(path):
         raise ImportError(f"Не удалось найти {path}")
 
 
-def get_patterns(path):
+def get_patterns(path: str) -> List:
     pack = get_module(path)
     try:
         patterns = getattr(pack, 'urlpatterns')
@@ -43,7 +51,11 @@ def get_patterns(path):
         raise AttributeError(f'Файл {path} не содержит urlpatterns')
 
 
-def include(path):
+def include(path: str):
+    """
+    Creates an iterator from the urlpatterns of the transmitted file.
+    :param path: file containing urlpatterns
+    """
     patterns = get_patterns(path)
     for args in patterns:
         if isinstance(args, bool):

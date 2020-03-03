@@ -28,21 +28,21 @@ def create_urls(app_path, project_name):
     create_file(app_path, 'urls', urls_file.format(project_name=project_name))
 
 
-def create_main(path, name):
-    app_path = f'{path}\\{name}'
+def create_main(path, project_name):
+    app_path = f'{path}\\{project_name}'
     mkdir(app_path)
     create_init(app_path)
     create_config(app_path)
-    create_urls(app_path, name)
+    create_urls(app_path, project_name)
 
 
 def create_manage(path, project_name):
     create_file(path, 'manage', manage_file.format(project_name=project_name))
 
 
-def create_path(name, path):
+def create_path(project_name, path):
     try:
-        project_path = f'{path}\\{name}' if path else name
+        project_path = f'{path}\\{project_name}' if path else project_name
         makedirs(project_path)
         return project_path
     except FileExistsError:
@@ -52,15 +52,15 @@ def create_path(name, path):
                             'попробуйте сменить пользователя и повтрить попытку')
 
 
-def get_name(name):
+def get_name(project_name):
     try:
-        return name or argv[1]
+        return project_name or argv[1]
     except IndexError:
         raise ValueError("Argument name is underfind")
 
 
-def start(name=None, path=''):
-    name = get_name(name)
-    project_path = create_path(name, path)
-    create_main(project_path, name)
-    create_manage(project_path, name)
+def start(project_name=None, path=''):
+    project_name = get_name(project_name)
+    project_path = create_path(project_name, path)
+    create_main(project_path, project_name)
+    create_manage(project_path, project_name)

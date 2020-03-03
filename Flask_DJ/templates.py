@@ -37,14 +37,12 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from Flask_DJ.app_init import create_session
-from Flask_DJ.urls import Path
 from .config import Config
 
 app = Flask('__main__')
 app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-path = Path(app)
 
 SqlAlchemyBase = dec.declarative_base()
 
@@ -53,7 +51,8 @@ login_manager.init_app(app)
 session = create_session(Config.SQLALCHEMY_DATABASE_URI, SqlAlchemyBase)
 """
 
-urls_file = """from {project_name} import path
+urls_file = """{docs}
+from utils.urls import get_relative_path, add_absolute_path
 
 # Add your urls
 urlpatterns = [
@@ -61,7 +60,8 @@ urlpatterns = [
 ]
 """
 
-manage_file = """from Flask_DJ import manage
+manage_file = """{docs}
+from Flask_DJ import manage
 from Flask_DJ.app_init import add_urls
 from {project_name} import app, config
 
@@ -91,4 +91,15 @@ forms_file = """from flask_wtf import FlaskForm
 import wtforms
 
 # Create your forms
+"""
+
+utils_urls = """# System file
+from {project_name} import app
+from Flask_DJ import urls
+
+path = urls.Path(app)
+add_absolute_path = path.add_absolute_path
+add_relative_path = path.add_relative_path
+get_relative_path = path.get_relative_path
+include = urls.include
 """

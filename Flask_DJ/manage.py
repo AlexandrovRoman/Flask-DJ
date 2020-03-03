@@ -1,11 +1,11 @@
-from os import getcwd, mkdir
-from os.path import exists
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 from importlib import import_module
-from . import CreationError
 from Flask_DJ.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
+
+from .docs import urls_docs
+from .utils import get_project_name, create_folder, create_file
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/"""
 manager = None
@@ -35,39 +35,16 @@ def runserver(host, port):
         serve(app_, host=host, port=port)
 
 
-def create_path(name):
-    try:
-        mkdir(name)
-    except (FileNotFoundError, PermissionError):
-        raise CreationError('Can`t create a directory with this name')
-
-
-def create_files(name):
-    project_name = getcwd().split('\\')[-1]
-    with open(f'{name}/views.py', 'w') as f:
-        f.write(views_file)
-    with open(f'{name}/models.py', 'w') as f:
-        f.write(models_file.format(project_name=project_name))
-    with open(f'{name}/urls.py', 'w') as f:
-        f.write(urls_file.format(project_name=project_name))
-    with open(f'{name}/forms.py', 'w') as f:
-        f.write(forms_file)
-
-
-def warning_handler(message):
-    commands = {1: lambda: None, 2: exit}
-    try:
-        commands[int(input(f'{message}\n1. Yes\n2. No'))]()
-    except (ValueError, KeyError):
-        print('Incorrect input')
-        exit(1)
+def create_app_files(app_name):
+    project_name = get_project_name()
+    create_file(app_name, 'views', views_file)
+    create_file(app_name, 'models', models_file.format(project_name=project_name))
+    create_file(app_name, 'urls', urls_file.format(docs=urls_docs, project_name=project_name))
+    create_file(app_name, 'forms', forms_file)
 
 
 def startapp(name):
     """Create folder containing forms.py, models.py, urls.py, views.py"""
-    if exists(name):
-        warning_handler('A directory with this name already exists, still create?')
-    else:
-        create_path(name)
-    create_files(name)
+    create_folder(name)
+    create_app_files(name)
     print(f'app {name} created')

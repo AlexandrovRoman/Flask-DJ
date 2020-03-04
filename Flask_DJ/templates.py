@@ -51,8 +51,7 @@ login_manager.init_app(app)
 session = create_session(Config.SQLALCHEMY_DATABASE_URI, SqlAlchemyBase)
 """
 
-urls_file = """{docs}
-from utils.urls import get_relative_path, add_absolute_path
+urls_file = """from utils.urls import get_relative_path, add_absolute_path
 
 # Add your urls
 urlpatterns = [
@@ -60,8 +59,7 @@ urlpatterns = [
 ]
 """
 
-manage_file = """{docs}
-from Flask_DJ import manage
+manage_file = """from Flask_DJ import manage
 from Flask_DJ.app_init import add_urls
 from {project_name} import app, config
 
@@ -93,7 +91,7 @@ import wtforms
 # Create your forms
 """
 
-utils_urls = """# System file
+utils_urls = """# View only file
 from {project_name} import app
 from Flask_DJ import urls
 

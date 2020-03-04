@@ -1,4 +1,5 @@
 from setuptools import setup, find_packages
+from Flask_DJ import __version__, __title__, __description__, __author_email__, __author__, __keywords__, __license__
 from os import path
 
 here = path.abspath(path.dirname(__file__))
@@ -8,26 +9,26 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='Flask-DJ',  # Required
-    version='0.0.8',  # Required
-    description='Django (mvc) structure for your Flask project',  # Optional
+    name=__title__,  # Required
+    version=__version__,  # Required
+    description=__description__,  # Optional
     long_description=long_description,  # Optional
     long_description_content_type='text/markdown',  # Optional (see note above)
     url='https://github.com/AlexandrovRoman/Flask-DJ',  # Optional
-    author='Alexandrov Roman',  # Optional
-    author_email='AlexandrovRomanisi@ya.ru',  # Optional
+    author=__author__,  # Optional
+    author_email=__author_email__,  # Optional
     classifiers=[  # Optional
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
-        'License :: OSI Approved :: MIT License',
+        f'License :: OSI Approved :: {__license__}',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
     ],
-    keywords='mvc django flask structure',  # Optional
+    keywords=__keywords__,  # Optional
     packages=find_packages(),  # Required
     install_requires=[
         'waitress==1.4.3',
@@ -40,9 +41,4 @@ setup(
         'Flask-WTF==0.14.3',
         'Flask-Login==0.5.0'
     ],
-    # entry_points={
-    #     'console_scripts': [
-    #         'startproject = Flask_DJ:start',
-    #     ],
-    # },
 )

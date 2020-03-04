@@ -3,8 +3,6 @@ from flask_script import Manager
 from importlib import import_module
 from Flask_DJ.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
-
-from .docs import urls_docs
 from .utils import get_project_name, create_folder, create_file
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/"""
@@ -39,7 +37,7 @@ def create_app_files(app_name):
     project_name = get_project_name()
     create_file(app_name, 'views', views_file)
     create_file(app_name, 'models', models_file.format(project_name=project_name))
-    create_file(app_name, 'urls', urls_file.format(docs=urls_docs, project_name=project_name))
+    create_file(app_name, 'urls', urls_file)
     create_file(app_name, 'forms', forms_file)
 
 

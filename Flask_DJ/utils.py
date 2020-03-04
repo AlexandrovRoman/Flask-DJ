@@ -19,7 +19,3 @@ def create_folder(path):
 
 def get_project_name():
     return getcwd().split('\\')[-1]
-
-
-def format_docs(docs):
-    return '"""' + docs + '"""'

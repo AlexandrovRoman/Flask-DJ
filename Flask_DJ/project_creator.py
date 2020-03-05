@@ -2,6 +2,7 @@ from Flask_DJ.templates import config_file, init_file, urls_file, manage_file, u
 from string import ascii_letters
 from random import choices, randint
 from sys import argv
+from os.path import join
 from .utils import create_file, create_folder
 
 
@@ -16,8 +17,8 @@ class ProjectConstructor:
     def __init__(self, project_name=None, path='', need_templates=False, need_static=False):
         self.path = path
         self.project_name = self._get_project_name(project_name)
-        self.project_path = f'{self.path}\\{self.project_name}' if self.path else self.project_name
-        self.main_app_path = f'{self.project_path}\\{project_name}'
+        self.project_path = join(self.path, self.project_name) if self.path else self.project_name
+        self.main_app_path = join(self.project_path, self.project_name)
         self.need_templates = self._get_flag_value('-t', need_templates)
         self.need_static = self._get_flag_value('-st', need_static)
 
@@ -70,7 +71,7 @@ class ProjectConstructor:
         create_file(self.main_app_path, 'urls', urls_file)
 
     def _create_manage(self):
-        create_file(self.path, 'manage',
+        create_file(self.project_path, 'manage',
                     manage_file.format(project_name=self.project_name))
 
     def _create_utils(self):
@@ -78,13 +79,13 @@ class ProjectConstructor:
         self._create_utils_urls()
 
     def _create_utils_folder(self):
-        create_folder(f'{self.project_path}\\utils')
+        create_folder(join(self.project_path, 'utils'))
 
     def _create_utils_urls(self):
-        create_file(f'{self.project_path}\\utils', 'urls', utils_urls.format(project_name=self.project_name))
+        create_file(join(self.project_path, 'utils'), 'urls', utils_urls.format(project_name=self.project_name))
 
     def _create_templates(self):
-        create_folder(f'{self.project_path}\\templates')
+        create_folder(join(self.project_path, 'templates'))
 
     def _create_static(self):
-        create_folder(f'{self.project_path}\\static')
+        create_folder(join(self.project_path, 'static'))

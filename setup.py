@@ -41,4 +41,7 @@ setup(
         'Flask-WTF==0.14.3',
         'Flask-Login==0.5.0'
     ],
+    project_urls={
+        "Source": "https://github.com/AlexandrovRoman/Flask-DJ"
+    }
 )

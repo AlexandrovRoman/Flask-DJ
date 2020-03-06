@@ -1,10 +1,10 @@
-import os
+from os.path import join, split
 from os import makedirs, getcwd
 from Flask_DJ.exceptions import CreationError
 
 
 def create_file(path, name, template):
-    with open(os.path.join(path, f'{name}.py'), 'w') as f:
+    with open(join(path, f'{name}.py'), 'w') as f:
         f.write(template)
 
 
@@ -19,4 +19,4 @@ def create_folder(path):
 
 
 def get_project_name():
-    return getcwd().split('\\')[-1]
+    return split(getcwd())[-1]

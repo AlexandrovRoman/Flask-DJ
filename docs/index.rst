@@ -49,7 +49,7 @@ Creating the index app:
 ~~~~~~~~~~~~~~~~~~~
 ::
 
-   $ python manage.py strtapp index
+   $ python manage.py startapp index
 
 That`ll create a directory index, which is laid out like this::
 

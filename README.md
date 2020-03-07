@@ -28,6 +28,6 @@ ProjectConstructor(your_project_name, getcwd()).startproject()
  python manage.py runserver
 ```
  
- ## View more info in:
+ ## Useful links:
  pypi: https://pypi.org/project/Flask-DJ/<br>
  full docs: https://flask-dj.readthedocs.io/en/latest/

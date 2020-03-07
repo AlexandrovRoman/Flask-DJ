@@ -83,7 +83,7 @@ import wtforms
 # Create your forms
 """
 
-urls_file = """from utils.urls import get_relative_path, add_absolute_path
+urls_file = """from utils.urls import relative_path
 
 # Add your urls
 urlpatterns = [
@@ -97,6 +97,6 @@ from Flask_DJ import urls
 path = urls.Path(app)
 add_absolute_path = path.add_absolute_path
 add_relative_path = path.add_relative_path
-get_relative_path = path.get_relative_path
+relative_path = path.relative_path
 include = urls.include
 """

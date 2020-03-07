@@ -29,7 +29,7 @@ class Path:
         return True
 
     @staticmethod
-    def get_relative_path(url: str, view_func: Callable, *, methods=['GET']) -> Tuple[str, Callable, List]:
+    def relative_path(url: str, view_func: Callable, *, methods=['GET']) -> Tuple[str, Callable, List]:
         """Call this function if you want to connect url data relative to"""
         return url, view_func, methods
 

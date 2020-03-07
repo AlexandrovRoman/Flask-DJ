@@ -30,3 +30,4 @@ ProjectConstructor(your_project_name, getcwd()).startproject()
  
  ## View more info in:
  pypi: https://pypi.org/project/Flask-DJ/<br>
+ full docs: https://flask-dj.readthedocs.io/en/latest/

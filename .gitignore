@@ -94,6 +94,9 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
+# Sphinx docs
+_build
+
 # Environments
 .env
 .venv

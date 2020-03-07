@@ -42,6 +42,7 @@ setup(
         'Flask-Login==0.5.0'
     ],
     project_urls={
-        "Source": "https://github.com/AlexandrovRoman/Flask-DJ"
+        "Source": "https://github.com/AlexandrovRoman/Flask-DJ",
+        "Docs": "https://flask-dj.readthedocs.io/en/latest/"
     }
 )

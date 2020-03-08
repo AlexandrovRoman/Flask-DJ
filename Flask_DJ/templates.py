@@ -83,7 +83,7 @@ import wtforms
 # Create your forms
 """
 
-urls_file = """from utils.urls import relative_path
+urls_file = """from utils.urls import {functions}
 
 # Add your urls
 urlpatterns = [

@@ -37,7 +37,7 @@ def create_app_files(app_name):
     project_name = get_project_name()
     create_file(app_name, 'views', views_file)
     create_file(app_name, 'models', models_file.format(project_name=project_name))
-    create_file(app_name, 'urls', urls_file)
+    create_file(app_name, 'urls', urls_file.format(functions="relative_path"))
     create_file(app_name, 'forms', forms_file)
 
 

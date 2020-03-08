@@ -74,7 +74,7 @@ class ProjectConstructor:
         return "".join(choices(ascii_letters, k=length))
 
     def _create_urls(self):
-        create_file(self.main_app_path, 'urls', urls_file)
+        create_file(self.main_app_path, 'urls', urls_file.format(functions="add_relative_path, include"))
 
     def _create_manage(self):
         create_file(self.project_path, 'manage',

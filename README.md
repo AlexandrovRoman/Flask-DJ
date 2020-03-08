@@ -1,8 +1,9 @@
 # Flask-DJ
  
- Since the flask has no strict project architecture, <br>
- it is easy for beginners to get confused when creating an application.<br>
- This library was created to help everyone who wants to create a small application.<br>
+ Since the flask has no strict architecture, <br>
+it's easy to get confused when creating a project.<br>
+This library was created to help everyone who wants to <br>
+create a project with mvc structure.<br>
  
  ## Quick start
  ### Install:

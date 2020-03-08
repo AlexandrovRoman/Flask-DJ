@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Flask-DJ's documentation!
+Flask-DJ: django (mvc) structure for your flask project
 ====================================
 .. image:: https://img.shields.io/pypi/dd/Flask-DJ
     :target: https://pypi.org/project/Flask-DJ/
@@ -14,7 +14,13 @@ Welcome to Flask-DJ's documentation!
 .. image:: https://img.shields.io/pypi/pyversions/Flask-DJ
     :target: https://pypi.org/project/Flask-DJ/
 
-**Flask-DJ**: django (mvc) structure for your flask project.
+**Flask-DJ**: Since the flask has no strict architecture,
+
+it's easy to get confused when creating a project.
+
+This library was created to help everyone who wants to
+
+create a project with mvc structure.
 
 -------------------
 

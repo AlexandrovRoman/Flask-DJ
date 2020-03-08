@@ -1,5 +1,5 @@
 from Flask_DJ.templates import config_file, init_file, urls_file, manage_file, utils_urls
-from string import ascii_letters
+from string import ascii_letters, digits
 from random import choices, randint
 from sys import argv
 from os.path import join
@@ -17,10 +17,16 @@ class ProjectConstructor:
     def __init__(self, project_name=None, path='', need_templates=False, need_static=False):
         self.path = path
         self.project_name = self._get_project_name(project_name)
+        self._valid_project_name()
         self.project_path = join(self.path, self.project_name) if self.path else self.project_name
         self.main_app_path = join(self.project_path, self.project_name)
         self.need_templates = self._get_flag_value('-t', need_templates)
         self.need_static = self._get_flag_value('-st', need_static)
+
+    def _valid_project_name(self):
+        if set(self.project_name).issubset(set(ascii_letters + digits)) and self.project_name[0] in digits:
+            return
+        raise ValueError("Invalid project name")
 
     @staticmethod
     def _get_project_name(project_name):
@@ -60,7 +66,7 @@ class ProjectConstructor:
 
     def _create_config(self):
         create_file(self.main_app_path, 'config',
-                    config_file.format(csrf=self.generate_key(randint(9, 12)),
+                    config_file.format(project_name=self.project_name, csrf=self.generate_key(randint(9, 12)),
                                        secret_key=self.generate_key(randint(9, 12))))
 
     @staticmethod

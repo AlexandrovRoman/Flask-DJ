@@ -4,7 +4,7 @@ models = [
 ]
 # Special urlpatterns
 urlpatterns = [
-    'app.urls',
+    '{project_name}.urls',
 ]
 
 HOST = '127.0.0.1'

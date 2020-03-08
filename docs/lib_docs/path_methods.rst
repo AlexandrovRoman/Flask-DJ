@@ -5,17 +5,17 @@ relative_path
 ~~~~~~~~~~~~~~~~~~~
 Brings the data to the format you need for the include
 
-Use in your apps
+Should be used in the applications
 
 add_relative_path
 ~~~~~~~~~~~~~~~~~~~
-Activates URLs from apps
+Activates URLs from applications
 
-Use in {project_name}/urls.py only
+Use it in {project_name}/urls.py only
 
 include
 ~~~~~~~~~~~~~~~~~~~
-Include your app URLs
+Includes your application URLs
 
 add_absolute_path
 ~~~~~~~~~~~~~~~~~~~
@@ -33,4 +33,4 @@ When using add to
     ]
     ... Some code
 
-Undesirable to use
+This path is undesirable to use

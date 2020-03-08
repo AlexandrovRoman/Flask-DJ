@@ -7,7 +7,7 @@ Creates a folder {name} with forms, models, urls, views .py files
 
 runserver
 ~~~~~~~~~~~~~~~~~~~
-Run your project
+Runs your project
 
 db {method}
 ~~~~~~~~~~~~~~~~~~~
@@ -17,7 +17,7 @@ db {method}
 
 init
 """"""""""""""""""
-Database initialization. Run before first migrating
+Initializes database, should be runed before the first migration
 
 migrate
 """"""""""""""""""
@@ -36,7 +36,7 @@ Put all models in the models list before you start.
 
 upgrade
 """"""""""""""""""
-Upgrade your database
+Upgrades your database
 
 downgrade
 """"""""""""""""""

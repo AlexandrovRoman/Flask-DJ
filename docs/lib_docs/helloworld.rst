@@ -26,7 +26,7 @@ Creating the index app
 
    $ python manage.py startapp index
 
-That`ll create a directory index, which is laid out like this::
+That`ll create a directory index, is shown below::
 
    app/
        app/
@@ -50,7 +50,7 @@ Create view function
 
 Add start url
 ~~~~~~~~~~~~~~~~~~~
-Add to index app:
+Add to index application:
 
 .. code-block:: python
 
@@ -62,7 +62,7 @@ Add to index app:
        relative_path("", index),
    ]
 
-Add to main app:
+Add to main application:
 
 .. code-block:: python
 

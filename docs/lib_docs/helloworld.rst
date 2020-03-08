@@ -1,7 +1,4 @@
-Hello world examle:
-====================================
-
-Creating a project:
+Creating a project
 ~~~~~~~~~~~~~~~~~~~
 .. code-block:: python
 
@@ -23,7 +20,7 @@ This will create a app directory in your project_dir with the following contents
            urls.py
        manage.py
 
-Creating the index app:
+Creating the index app
 ~~~~~~~~~~~~~~~~~~~
 .. code-block:: shell
 
@@ -43,7 +40,7 @@ That`ll create a directory index, which is laid out like this::
              views.py
        manage.py
 
-Create view function:
+Create view function
 ~~~~~~~~~~~~~~~~~~~
 .. code-block:: python
 
@@ -51,7 +48,7 @@ Create view function:
    def index():
        return "Hello world"
 
-Add start url:
+Add start url
 ~~~~~~~~~~~~~~~~~~~
 Add to index app:
 
@@ -76,7 +73,7 @@ Add to main app:
        add_relative_path("/", include("index.urls")),
    ]
 
-Run project:
+Run project
 ~~~~~~~~~~~~~~~~~~~
 .. code-block:: shell
 

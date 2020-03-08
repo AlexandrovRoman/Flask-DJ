@@ -27,7 +27,7 @@ Install package:
 Full docs:
 -------------------
 
-Hello world:
+Hello world example:
 ~~~~~~~~~~~~~~~~~~~
 .. toctree::
    :maxdepth: 2

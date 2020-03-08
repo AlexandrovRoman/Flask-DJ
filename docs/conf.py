@@ -18,7 +18,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Flask-DJ'
+project = 'Flask-DJ: django (mvc) structure for your flask project'
 copyright = '2020, Alexandrov Roman'
 author = 'Alexandrov Roman'
 

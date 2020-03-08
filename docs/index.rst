@@ -14,6 +14,10 @@ Welcome to Flask-DJ's documentation!
 .. image:: https://img.shields.io/pypi/pyversions/Flask-DJ
     :target: https://pypi.org/project/Flask-DJ/
 
+**Flask-DJ**: django (mvc) structure for your flask project.
+
+-------------------
+
 Install package:
 -------------------
 .. code-block:: shell

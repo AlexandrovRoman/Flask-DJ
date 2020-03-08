@@ -24,7 +24,7 @@ class ProjectConstructor:
         self.need_static = self._get_flag_value('-st', need_static)
 
     def _valid_project_name(self):
-        if set(self.project_name).issubset(set(ascii_letters + digits)) and self.project_name[0] in digits:
+        if set(self.project_name).issubset(set(ascii_letters + digits + "_")) and self.project_name[0] not in digits:
             return
         raise ValueError("Invalid project name")
 

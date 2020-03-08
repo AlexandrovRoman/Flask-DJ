@@ -1,0 +1,84 @@
+Hello world examle:
+====================================
+
+Creating a project:
+~~~~~~~~~~~~~~~~~~~
+.. code-block:: python
+
+   # setup.py
+   from Flask_DJ import ProjectConstructor
+   from os import getcwd
+   your_project_name = 'app'
+   project_dir = getcwd()
+   ProjectConstructor(your_project_name, project_dir).startproject()
+   # if your project need templates and static files:
+   # ProjectConstructor(your_project_name, project_dir, need_templates=True, need_static=True).startproject()
+
+This will create a app directory in your project_dir with the following contents::
+
+   app/
+       app/
+           __init__.py
+           config.py
+           urls.py
+       manage.py
+
+Creating the index app:
+~~~~~~~~~~~~~~~~~~~
+.. code-block:: shell
+
+   $ python manage.py startapp index
+
+That`ll create a directory index, which is laid out like this::
+
+   app/
+       app/
+           __init__.py
+           config.py
+           urls.py
+       index/
+             forms.py
+             models.py
+             urls.py
+             views.py
+       manage.py
+
+Create view function:
+~~~~~~~~~~~~~~~~~~~
+.. code-block:: python
+
+   # index/views.py
+   def index():
+       return "Hello world"
+
+Add start url:
+~~~~~~~~~~~~~~~~~~~
+Add to index app:
+
+.. code-block:: python
+
+   # index/urls.py
+   from utils.urls import relative_path
+   from .views import index
+
+   urlpatterns = [
+       relative_path("", index),
+   ]
+
+Add to main app:
+
+.. code-block:: python
+
+   # app/urls.py
+   from utils.urls import add_relative_path, include
+
+   urlpatterns = [
+       add_relative_path("/", include("index.urls")),
+   ]
+
+Run project:
+~~~~~~~~~~~~~~~~~~~
+.. code-block:: shell
+
+   $ python manage.py runserver
+

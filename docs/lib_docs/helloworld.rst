@@ -1,5 +1,17 @@
 Creating a project
 ~~~~~~~~~~~~~~~~~~~
+.. code-block:: shell
+
+    $ startproject app
+
+If your project need templates and static files
+
+.. code-block:: shell
+
+    $ startproject app -t -st
+
+If something went wrong
+
 .. code-block:: python
 
    # setup.py

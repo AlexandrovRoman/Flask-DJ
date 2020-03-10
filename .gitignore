@@ -129,3 +129,6 @@ dmypy.json
 
 # test app
 test_project/
+
+# Habr post
+habr.md

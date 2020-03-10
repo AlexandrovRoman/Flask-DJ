@@ -31,7 +31,7 @@ class ProjectConstructor:
     @staticmethod
     def _get_project_name(project_name):
         try:
-            return project_name or argv[1]
+            return project_name or argv[2]
         except IndexError:
             print(argv)
             raise ValueError("project_name is not defined")
@@ -100,3 +100,13 @@ class ProjectConstructor:
 
 def console_creation():
     ProjectConstructor().startproject()
+
+
+def command():
+    commands = {
+        'startproject': console_creation
+    }
+    try:
+        commands[argv[1]]()
+    except (KeyError, IndexError):
+        raise ValueError("Invalid command")

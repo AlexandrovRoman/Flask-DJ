@@ -2,7 +2,7 @@ Creating a project
 ~~~~~~~~~~~~~~~~~~~
 .. code-block:: shell
 
-    $ startproject app
+    $ flask-dj startproject app
 
 If your project need templates and static files
 

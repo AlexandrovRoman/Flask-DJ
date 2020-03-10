@@ -11,7 +11,7 @@ create a project with mvc structure.<br>
  ### Start project:
  
  ```shell script
-$ startproject app
+$ flask-dj startproject app
 ```
 
 or

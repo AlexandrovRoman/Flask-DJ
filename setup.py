@@ -43,7 +43,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'startproject = Flask_DJ:console_creation',
+            'flask-dj = Flask_DJ:command',
         ],
     },
     project_urls={

@@ -9,6 +9,12 @@ create a project with mvc structure.<br>
  ### Install:
  pip install Flask-DJ
  ### Start project:
+ 
+ ```shell script
+$ startproject app
+```
+
+or
 
  ```python
 from Flask_DJ import ProjectConstructor

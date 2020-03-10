@@ -33,6 +33,7 @@ class ProjectConstructor:
         try:
             return project_name or argv[1]
         except IndexError:
+            print(argv)
             raise ValueError("project_name is not defined")
 
     @staticmethod
@@ -95,3 +96,7 @@ class ProjectConstructor:
 
     def _create_static(self):
         create_folder(join(self.project_path, 'static'))
+
+
+def console_creation():
+    ProjectConstructor().startproject()

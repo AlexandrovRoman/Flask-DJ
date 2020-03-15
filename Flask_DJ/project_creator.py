@@ -89,6 +89,7 @@ def console_creation():
     parser.add_argument("--templates", "-t", action="store_true", default=False)
     parser.add_argument("--static", "-st", action="store_true", default=False)
     args = parser.parse_args()
+
     ProjectConstructor(args.project_name, need_templates=args.templates, need_static=args.static).startproject()
 
 
@@ -96,7 +97,17 @@ def command():
     commands = {
         'startproject': console_creation
     }
+
     try:
         commands[argv[1]]()
-    except (KeyError, IndexError):
-        raise ValueError("Invalid command")
+    except KeyError:
+        print("Input correct command")
+        print_commands(commands)
+    except IndexError:
+        print("Input command")
+        print_commands(commands)
+
+
+def print_commands(commands):
+    for key in commands:
+        print(f"\t\t{key}")

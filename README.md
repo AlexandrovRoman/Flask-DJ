@@ -9,8 +9,6 @@ This library was created to help everyone who wants to <br>
 create a project with mvc structure.<br>
  
  ## Quick start
- ### Install:
- pip install Flask-DJ
  ### Start project:
  
  ```shell script

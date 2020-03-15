@@ -55,11 +55,12 @@ manage_file = """from Flask_DJ import manage
 from Flask_DJ.app_init import add_urls
 from {project_name} import app, config
 
-manage.init_manage(app)
-manage.init_db(config.models)
+manage.init_manage_and_app(app)
+manage.init_db_commands(config.models)
 
-manager.option("--templates", "-t", action="store_true")(
-    manager.option("--static", "-st", action="store_true")(manager.option("name")(manage.manager.startapp)))
+manage.manager.option("--templates", "-t", action="store_true")(
+    manage.manager.option("--static", "-st", action="store_true")(
+        manage.manager.option("name")(manage.startapp)))
 
 
 @manage.manager.command

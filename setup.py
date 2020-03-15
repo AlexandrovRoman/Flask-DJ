@@ -18,7 +18,7 @@ setup(
     author=__author__,  # Optional
     author_email=__author_email__,  # Optional
     classifiers=[  # Optional
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Build Tools',
         f'License :: OSI Approved :: {__license__}',

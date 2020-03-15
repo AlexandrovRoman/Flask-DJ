@@ -15,39 +15,42 @@ commands = [
 ]
 
 
-def init_manage(app):
+def init_manage_and_app(app):
     global manager, app_
     app_ = app
     manager = Manager(app)
 
 
-def init_db(models=[]):
+def init_db_commands(models=[]):
     manager.add_command('db', MigrateCommand)
+
     for file in models:
         import_module(file)
 
 
 def runserver(host, port):
-    if app_.debug:
-        app_.run(host=host, port=port)
-    else:
-        serve(app_, host=host, port=port)
+    app_.run(host=host, port=port) if app_.debug else serve(app_, host=host, port=port)
 
 
-def startapp(need_templates, need_static, name):
+def startapp(templates, static, name):
     """Create folder containing forms.py, models.py, urls.py, views.py"""
     valid_folder_name(name)
+
     create_folder(name)
     create_app_files(name)
-    if need_templates:
+
+    if templates:
         create_app_templates(name)
-    if need_static:
+    if static:
         create_app_static(name)
+
     print(f'app {name} created')
 
 
 def create_app_files(app_name):
+    """Create .py files for your app"""
     project_name = get_project_name()
+
     create_file(app_name, 'views', views_file)
     create_file(app_name, 'models', models_file.format(project_name=project_name))
     create_file(app_name, 'urls', urls_file.format(functions="relative_path"))

@@ -31,15 +31,15 @@ setup(
     keywords=__keywords__,  # Optional
     packages=find_packages(),  # Required
     install_requires=[
-        'waitress==1.4.3',
-        'flask==1.1.1',
-        'Flask-Migrate==2.5.2',
-        'Flask-Script==2.0.6',
-        'Flask-SQLAlchemy==2.4.1',
-        'WTForms==2.2.1',
-        'SQLAlchemy==1.3.13',
-        'Flask-WTF==0.14.3',
-        'Flask-Login==0.5.0'
+        'waitress',
+        'flask',
+        'Flask-Migrate',
+        'Flask-Script',
+        'Flask-SQLAlchemy',
+        'WTForms',
+        'SQLAlchemy',
+        'Flask-WTF',
+        'Flask-Login'
     ],
     entry_points={
         'console_scripts': [

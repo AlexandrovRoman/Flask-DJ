@@ -57,8 +57,9 @@ from {project_name} import app, config
 
 manage.init_manage(app)
 manage.init_db(config.models)
-for command in manage.commands:
-    setattr(manage, command, manage.manager.command(getattr(manage, command)))
+
+manager.option("--templates", "-t", action="store_true")(
+    manager.option("--static", "-st", action="store_true")(manager.option("name")(manage.manager.startapp)))
 
 
 @manage.manager.command

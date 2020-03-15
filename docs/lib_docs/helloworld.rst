@@ -10,6 +10,13 @@ If your project need templates and static files
 
     $ flask-dj startproject app -t -st
 
+or
+
+.. code-block:: shell
+
+    $ flask-dj startproject app --templates --static
+
+
 If something went wrong
 
 .. code-block:: python

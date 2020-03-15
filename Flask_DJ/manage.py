@@ -3,14 +3,15 @@ from flask_script import Manager
 from importlib import import_module
 from Flask_DJ.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
-from .utils import get_project_name, create_folder, create_file
+from os.path import join
+from .utils import get_project_name, create_folder, create_file, valid_folder_name
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/"""
 manager = None
 app_ = None
 
 commands = [
-    'startapp',
+
 ]
 
 
@@ -33,6 +34,18 @@ def runserver(host, port):
         serve(app_, host=host, port=port)
 
 
+def startapp(need_templates, need_static, name):
+    """Create folder containing forms.py, models.py, urls.py, views.py"""
+    valid_folder_name(name)
+    create_folder(name)
+    create_app_files(name)
+    if need_templates:
+        create_app_templates(name)
+    if need_static:
+        create_app_static(name)
+    print(f'app {name} created')
+
+
 def create_app_files(app_name):
     project_name = get_project_name()
     create_file(app_name, 'views', views_file)
@@ -41,8 +54,9 @@ def create_app_files(app_name):
     create_file(app_name, 'forms', forms_file)
 
 
-def startapp(name):
-    """Create folder containing forms.py, models.py, urls.py, views.py"""
-    create_folder(name)
-    create_app_files(name)
-    print(f'app {name} created')
+def create_app_templates(app_name):
+    create_folder(join("templates", app_name))
+
+
+def create_app_static(app_name):
+    create_folder(join("static", app_name))

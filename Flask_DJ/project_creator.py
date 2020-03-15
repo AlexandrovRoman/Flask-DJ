@@ -1,9 +1,10 @@
+from argparse import ArgumentParser
 from Flask_DJ.templates import config_file, init_file, urls_file, manage_file, utils_urls
-from string import ascii_letters, digits
+from string import ascii_letters
 from random import choices, randint
 from sys import argv
 from os.path import join
-from .utils import create_file, create_folder
+from .utils import create_file, create_folder, valid_folder_name
 
 
 class ProjectConstructor:
@@ -16,29 +17,12 @@ class ProjectConstructor:
     """
     def __init__(self, project_name=None, path='', need_templates=False, need_static=False):
         self.path = path
-        self.project_name = self._get_project_name(project_name)
-        self._valid_project_name()
+        self.project_name = project_name
+        valid_folder_name(project_name)
         self.project_path = join(self.path, self.project_name) if self.path else self.project_name
         self.main_app_path = join(self.project_path, self.project_name)
-        self.need_templates = self._get_flag_value('-t', need_templates)
-        self.need_static = self._get_flag_value('-st', need_static)
-
-    def _valid_project_name(self):
-        if set(self.project_name).issubset(set(ascii_letters + digits + "_")) and self.project_name[0] not in digits:
-            return
-        raise ValueError("Invalid project name")
-
-    @staticmethod
-    def _get_project_name(project_name):
-        try:
-            return project_name or argv[2]
-        except IndexError:
-            print(argv)
-            raise ValueError("project_name is not defined")
-
-    @staticmethod
-    def _get_flag_value(flag: str, default=False) -> bool:
-        return flag in argv or default
+        self.need_templates = need_templates
+        self.need_static = need_static
 
     def startproject(self):
         self._create_project_folder()
@@ -99,7 +83,13 @@ class ProjectConstructor:
 
 
 def console_creation():
-    ProjectConstructor().startproject()
+    parser = ArgumentParser()
+    parser.add_argument("command")
+    parser.add_argument("project_name")
+    parser.add_argument("--templates", "-t", action="store_true", default=False)
+    parser.add_argument("--static", "-st", action="store_true", default=False)
+    args = parser.parse_args()
+    ProjectConstructor(args.project_name, need_templates=args.templates, need_static=args.static).startproject()
 
 
 def command():

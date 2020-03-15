@@ -3,6 +3,9 @@ Manage:
 
 startapp {name}
 ~~~~~~~~~~~~~~~~~~~
+Flags: -t (--templates) create app folder in templates
+-st (--static) create app folder in static
+
 Creates a folder {name} with forms, models, urls, views .py files
 
 runserver

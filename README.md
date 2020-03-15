@@ -1,3 +1,6 @@
+![image](docs/_static/flask-dj_logo.png)
+
+
 # Flask-DJ
  
  Since the flask has no strict architecture, <br>

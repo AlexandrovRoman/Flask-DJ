@@ -1,4 +1,4 @@
-![image](https://habrastorage.org/webt/fm/uv/j0/fmuvj0qq8vym2hnf01n0wpeupn0.png)
+![image](docs/_static/flask-dj_logo.png)
 
 
 # Flask-DJ
@@ -18,11 +18,11 @@ $ flask-dj startproject app
 or
 
  ```python
-from Flask_DJ import ProjectConstructor
+from flask_dj import startproject
 from os import getcwd
 
 your_project_name = 'app'
-ProjectConstructor(your_project_name, getcwd()).startproject()
+startproject(your_project_name, getcwd())
 ```
  ### New app:
  
@@ -37,4 +37,5 @@ ProjectConstructor(your_project_name, getcwd()).startproject()
 ```
  
  ## Useful links:
+ pypi: https://pypi.org/project/Flask-DJ/
  full docs: https://flask-dj.readthedocs.io/en/latest/

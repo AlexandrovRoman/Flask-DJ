@@ -22,11 +22,11 @@ If something went wrong
 .. code-block:: python
 
    # setup.py
-   from Flask_DJ import ProjectConstructor
+   from flask_dj import startproject
    from os import getcwd
    your_project_name = 'app'
    project_dir = getcwd()
-   ProjectConstructor(your_project_name, project_dir).startproject()
+   startproject(your_project_name, project_dir)
    # if your project need templates and static files:
    # ProjectConstructor(your_project_name, project_dir, need_templates=True, need_static=True).startproject()
 

@@ -1,7 +1,7 @@
 from os.path import join, split
 from os import makedirs, getcwd
 from string import ascii_letters, digits
-from Flask_DJ.exceptions import CreationError
+from flask_dj.exceptions import CreationError
 
 
 def create_file(path, name, template):

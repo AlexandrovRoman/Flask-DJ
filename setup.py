@@ -1,5 +1,5 @@
 from setuptools import setup, find_packages
-from Flask_DJ import __version__, __title__, __description__, __author_email__, __author__, __keywords__, __license__
+from flask_dj import __version__, __title__, __description__, __author_email__, __author__, __keywords__, __license__
 from os import path
 
 here = path.abspath(path.dirname(__file__))

@@ -1,5 +1,5 @@
 from argparse import ArgumentParser
-from Flask_DJ.templates import config_file, init_file, urls_file, manage_file, utils_urls
+from flask_dj.templates import config_file, init_file, urls_file, manage_file, utils_urls
 from string import ascii_letters
 from random import choices, randint
 from sys import argv
@@ -82,17 +82,6 @@ class ProjectConstructor:
         create_folder(join(self.project_path, 'static'))
 
 
-def console_creation():
-    parser = ArgumentParser()
-    parser.add_argument("command")
-    parser.add_argument("project_name")
-    parser.add_argument("--templates", "-t", action="store_true", default=False)
-    parser.add_argument("--static", "-st", action="store_true", default=False)
-    args = parser.parse_args()
-
-    ProjectConstructor(args.project_name, need_templates=args.templates, need_static=args.static).startproject()
-
-
 def command():
     commands = {
         'startproject': console_creation
@@ -106,6 +95,21 @@ def command():
     except IndexError:
         print("Input command")
         print_commands(commands)
+
+
+def console_creation():
+    parser = ArgumentParser()
+    parser.add_argument("command")
+    parser.add_argument("project_name")
+    parser.add_argument("--templates", "-t", action="store_true", default=False)
+    parser.add_argument("--static", "-st", action="store_true", default=False)
+    args = parser.parse_args()
+
+    startproject(args.project_name, need_templates=args.templates, need_static=args.static)
+
+
+def startproject(project_name, path="", need_templates=False, need_static=False):
+    ProjectConstructor(project_name, path, need_templates, need_static)
 
 
 def print_commands(commands):

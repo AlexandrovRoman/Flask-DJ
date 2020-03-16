@@ -3,7 +3,7 @@ from os.path import join, exists
 from random import choices
 from shutil import rmtree
 from string import ascii_letters
-from Flask_DJ import ProjectConstructor
+from flask_dj import startproject
 
 
 class ProjectCreate:
@@ -13,7 +13,7 @@ class ProjectCreate:
         self.cwd = getcwd()
         self.project_name = ''.join(choices(ascii_letters, k=12))
         self.project_path = join(self.cwd, self.project_name)
-        ProjectConstructor(self.project_name, self.cwd, self.need_templates, self.need_static).startproject()
+        startproject(self.project_name, self.cwd, self.need_templates, self.need_static)
 
     def _file_test(self, folder, filename, test_contents=['']):
         test_path = join(join(self.project_path, folder), f'{filename}.py')

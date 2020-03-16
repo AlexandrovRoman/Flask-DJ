@@ -1,7 +1,7 @@
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 from importlib import import_module
-from Flask_DJ.templates import views_file, models_file, urls_file, forms_file
+from flask_dj.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
 from os.path import join
 from .utils import get_project_name, create_folder, create_file, valid_folder_name

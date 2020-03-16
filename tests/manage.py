@@ -1,7 +1,7 @@
 from os import chdir
 from os.path import exists, join, split
 from tests.basic_project_creator import ProjectCreate
-from Flask_DJ.manage import startapp
+from flask_dj.manage import startapp
 
 
 class TestManageStartapp(ProjectCreate):

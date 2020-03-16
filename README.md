@@ -1,4 +1,4 @@
-![image](docs/_static/flask-dj_logo.png)
+![image](https://habrastorage.org/webt/fm/uv/j0/fmuvj0qq8vym2hnf01n0wpeupn0.png)
 
 
 # Flask-DJ
@@ -37,5 +37,4 @@ ProjectConstructor(your_project_name, getcwd()).startproject()
 ```
  
  ## Useful links:
- pypi: https://pypi.org/project/Flask-DJ/<br>
  full docs: https://flask-dj.readthedocs.io/en/latest/

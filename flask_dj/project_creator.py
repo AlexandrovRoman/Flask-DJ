@@ -109,7 +109,7 @@ def console_creation():
 
 
 def startproject(project_name, path="", need_templates=False, need_static=False):
-    ProjectConstructor(project_name, path, need_templates, need_static)
+    ProjectConstructor(project_name, path, need_templates, need_static).startproject()
 
 
 def print_commands(commands):

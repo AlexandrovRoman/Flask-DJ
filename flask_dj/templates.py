@@ -89,7 +89,7 @@ urls_file = """from utils.urls import {functions}
 
 # Add your urls
 urlpatterns = [
-
+    
 ]
 """
 

@@ -1,9 +1,13 @@
-from shutil import rmtree
 from os.path import exists, join
-from .basic_project_creator import ProjectCreate
+import pytest
+from flask_dj import startproject
+from tests.basic_project_creator import ProjectCreate
 
 
 class TestBaseSettingProjectConstructor(ProjectCreate):
+    def setup(self, need_static=False, need_templates=False):
+        super().setup()
+
     def test_project_folder_exist(self):
         assert exists(self.project_path)
 
@@ -37,10 +41,32 @@ class TestBaseSettingProjectConstructor(ProjectCreate):
     def test_static_folder(self):
         assert exists(join(self.project_path, 'static')) or not self.need_static
 
-    def teardown(self):
-        rmtree(self.project_path)
-
 
 class TestAdvancedProjectConfig(TestBaseSettingProjectConstructor):
-    def setup(self, need_templates=False, need_static=False):
-        super().setup(True, True)
+    def setup(self):
+        super().setup(need_templates=True, need_static=True)
+
+
+class UncorrectProjectName(ProjectCreate):
+    def setup(self, project_name):
+        super().setup(project_name=project_name, fast_start=False)
+
+    def test_create(self):
+        with pytest.raises(ValueError):
+            startproject(self.project_name)
+
+    def test_main_folder_not_exist(self):
+        assert not exists(join(self.project_path, self.project_name))
+
+    def teardown(self):
+        pass
+
+
+class TestNumUncorrectProjectName(UncorrectProjectName):
+    def setup(self):
+        super().setup("123project")
+
+
+class TestDashInProjectName(UncorrectProjectName):
+    def setup(self):
+        super().setup("pro-ject")

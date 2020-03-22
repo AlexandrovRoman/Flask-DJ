@@ -7,13 +7,15 @@ from flask_dj import startproject
 
 
 class ProjectCreate:
-    def setup(self, need_templates=False, need_static=False):
+    def setup(self, project_name=''.join(choices(ascii_letters, k=12)),
+              need_templates=False, need_static=False, fast_start=True):
         self.need_templates = need_templates
         self.need_static = need_static
         self.cwd = getcwd()
-        self.project_name = ''.join(choices(ascii_letters, k=12))
+        self.project_name = project_name
         self.project_path = join(self.cwd, self.project_name)
-        startproject(self.project_name, self.cwd, self.need_templates, self.need_static)
+        if fast_start:
+            startproject(self.project_name, self.cwd, self.need_templates, self.need_static)
 
     def _file_test(self, folder, filename, test_contents=['']):
         test_path = join(join(self.project_path, folder), f'{filename}.py')

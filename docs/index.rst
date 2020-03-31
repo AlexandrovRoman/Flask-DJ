@@ -11,6 +11,9 @@ Flask-DJ: django (mvc) structure for your flask project
 .. image:: https://img.shields.io/pypi/l/Flask-DJ
     :target: https://pypi.org/project/Flask-DJ/
 
+.. image:: https://img.shields.io/pypi/wheel/Flask-DJ
+   :target: https://pypi.org/project/Flask-DJ/
+
 .. image:: https://img.shields.io/pypi/pyversions/Flask-DJ
     :target: https://pypi.org/project/Flask-DJ/
 

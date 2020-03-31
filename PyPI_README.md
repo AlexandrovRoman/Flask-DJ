@@ -35,6 +35,3 @@ startproject(your_project_name, getcwd())
 ```shell script
  python manage.py runserver
 ```
- 
- ## Useful links:
- full docs: https://flask-dj.readthedocs.io/en/latest/

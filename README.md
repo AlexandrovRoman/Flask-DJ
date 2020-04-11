@@ -37,6 +37,6 @@ startproject(your_project_name, getcwd())
 ```
  
  ## Useful links:
- pypi: https://pypi.org/project/Flask-DJ/
- full docs: https://flask-dj.readthedocs.io/en/latest/
- habr: https://habr.com/ru/post/491852/
+ pypi: https://pypi.org/project/Flask-DJ/<br>
+ full docs: https://flask-dj.readthedocs.io/en/latest/<br>
+ habr: https://habr.com/ru/post/491852/<br>

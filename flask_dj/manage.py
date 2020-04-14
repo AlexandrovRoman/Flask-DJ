@@ -1,10 +1,12 @@
+from typing import NoReturn
+from flask import Flask
 from flask_migrate import MigrateCommand
 from flask_script import Manager
 from importlib import import_module
 from flask_dj.templates import views_file, models_file, urls_file, forms_file
 from waitress import serve
 from os.path import join
-from .utils import get_project_name, create_folder, create_file, valid_folder_name
+from ._utils import get_project_name, create_folder, create_file, valid_folder_name
 
 """database-methods: https://flask-migrate.readthedocs.io/en/latest/"""
 manager = None
@@ -15,7 +17,7 @@ commands = [
 ]
 
 
-def init_manage_and_app(app):
+def init_manage_and_app(app: Flask):
     global manager, app_
     app_ = app
     manager = Manager(app)
@@ -28,11 +30,11 @@ def init_db_commands(models=[]):
         import_module(file)
 
 
-def runserver(host, port):
+def runserver(host: str, port: int) -> NoReturn:
     app_.run(host=host, port=port) if app_.debug else serve(app_, host=host, port=port)
 
 
-def startapp(templates, static, name):
+def startapp(templates: bool, static: bool, name: str) -> None:
     """Create folder containing forms.py, models.py, urls.py, views.py"""
     valid_folder_name(name)
 
@@ -47,7 +49,7 @@ def startapp(templates, static, name):
     print(f'app {name} created')
 
 
-def create_app_files(app_name):
+def create_app_files(app_name: str) -> None:
     """Create .py files for your app"""
     project_name = get_project_name()
 
@@ -57,9 +59,9 @@ def create_app_files(app_name):
     create_file(app_name, 'forms', forms_file)
 
 
-def create_app_templates(app_name):
+def create_app_templates(app_name: str) -> None:
     create_folder(join("templates", app_name))
 
 
-def create_app_static(app_name):
+def create_app_static(app_name: str) -> None:
     create_folder(join("static", app_name))

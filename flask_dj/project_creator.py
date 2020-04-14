@@ -1,10 +1,11 @@
 from argparse import ArgumentParser
+from typing import Iterable
 from flask_dj.templates import config_file, init_file, urls_file, manage_file, utils_urls
 from string import ascii_letters
 from random import choices, randint
 from sys import argv
 from os.path import join
-from .utils import create_file, create_folder, valid_folder_name
+from ._utils import create_file, create_folder, valid_folder_name
 
 
 class ProjectConstructor:
@@ -55,7 +56,7 @@ class ProjectConstructor:
                                        secret_key=self.generate_key(randint(9, 12))))
 
     @staticmethod
-    def generate_key(length):
+    def generate_key(length: int):
         return "".join(choices(ascii_letters, k=length))
 
     def _create_urls(self):
@@ -112,6 +113,6 @@ def startproject(project_name, path="", need_templates=False, need_static=False)
     ProjectConstructor(project_name, path, need_templates, need_static).startproject()
 
 
-def print_commands(commands):
+def print_commands(commands: Iterable):
     for key in commands:
         print(f"\t\t{key}")

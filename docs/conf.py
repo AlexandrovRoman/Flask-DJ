@@ -23,7 +23,7 @@ copyright = '2020, Alexandrov Roman'
 author = 'Alexandrov Roman'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.6'
+release = '1.0.7'
 
 
 # -- General configuration ---------------------------------------------------

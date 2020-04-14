@@ -48,6 +48,7 @@ All methods:
 .. toctree::
    :maxdepth: 2
 
+   lib_docs/app_init
    lib_docs/manage_methods
    lib_docs/path_methods
 

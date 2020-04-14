@@ -34,7 +34,7 @@ class Path:
         return url, view_func, methods
 
 
-def get_module(path: str):
+def _get_module(path: str):
     try:
         pack = import_module(path)
         return pack
@@ -42,8 +42,8 @@ def get_module(path: str):
         raise ImportError(f"No {path} could be found")
 
 
-def get_patterns(path: str) -> List:
-    pack = get_module(path)
+def _get_patterns(path: str) -> List:
+    pack = _get_module(path)
     try:
         patterns = getattr(pack, 'urlpatterns')
         return patterns
@@ -56,7 +56,7 @@ def include(path: str):
     Creates an iterator from the urlpatterns of the transmitted file.
     :param path: file containing urlpatterns
     """
-    patterns = get_patterns(path)
+    patterns = _get_patterns(path)
     for args in patterns:
         if isinstance(args, bool):
             continue

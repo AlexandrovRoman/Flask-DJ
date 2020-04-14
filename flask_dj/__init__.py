@@ -1,3 +1,12 @@
+"""Django structure for your flask project.
+
+To start project use command
+
+$ flask-dj startproject project
+
+"""
+
+
 from .__project_info__ import __version__, __title__, __description__, \
     __author_email__, __author__, __keywords__, __license__
 from .project_creator import startproject, command
